@@ -6,7 +6,7 @@ local Window = Axion:CreateWindow({
     Version = "v1.0",
     LoadingTitle = "Axion UI",
     LoadingSubtitle = "Version 1.0 DEMO",
-    Theme = "Ocean",
+    Theme = "Galaxy",
     ConfigurationSaving = {
         Enabled = true,
         FolderName = "AxionConfig",
@@ -19,8 +19,8 @@ local Window = Axion:CreateWindow({
 })
 
 local MainTab = Window:CreateTab({
-    Name = "All Elements Showcase",
-    Icon = "⭐"
+    Name = "Tab",
+    Icon = "rbxassetid://136220511671311"
 })
 
 local ToggleSection = MainTab:CreateSection("Toggle Elements")
