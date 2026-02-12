@@ -19,7 +19,7 @@ local Window = Axion:CreateWindow({
 })
 
 local MainTab = Window:CreateTab({
-    Name = "Tab",
+    Name = "Tab w REALicon",
     Icon = "rbxassetid://136220511671311"
 })
 
