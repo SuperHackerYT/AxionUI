@@ -1,0 +1,373 @@
+local Axion = loadstring(game:HttpGet("https://raw.githubusercontent.com/SuperHackerYT/AxionUI/refs/heads/main/Axion%20UI%20Library.luau"))()
+
+local Window = Axion:CreateWindow({
+    Name = "Axion UI",
+    Subtitle = "Example",
+    Version = "v1.0",
+    LoadingTitle = "Axion UI",
+    LoadingSubtitle = "Version 1.0 DEMO",
+    Theme = "Ocean",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = "AxionConfig",
+        FileName = "ExampleScript"
+    },
+    AnimationSpeed = 0.25,
+    RippleEnabled = true,
+    CornerRadius = 14,
+    ToggleKey = Enum.KeyCode.RightShift
+})
+
+local MainTab = Window:CreateTab({
+    Name = "All Elements Showcase",
+    Icon = "⭐"
+})
+
+local ToggleSection = MainTab:CreateSection("Toggle Elements")
+
+local simpleToggle = ToggleSection:CreateToggle({
+    Name = "Simple Toggle",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(value)
+        print("Simple Toggle:", value)
+    end
+})
+
+local advancedToggle = ToggleSection:CreateToggle({
+    Name = "Advanced Feature",
+    CurrentValue = true,
+    Flag = "Toggle2",
+    Callback = function(value)
+        print("Advanced Toggle:", value)
+    end
+})
+
+local ButtonSection = MainTab:CreateSection("Button Elements")
+
+ButtonSection:CreateButton({
+    Name = "Primary Action",
+    Icon = "🚀",
+    Callback = function()
+        print("Primary button clicked!")
+    end
+})
+
+ButtonSection:CreateButton({
+    Name = "Secondary Action",
+    Icon = "⚙️",
+    Callback = function()
+        print("Secondary button clicked!")
+    end
+})
+
+ButtonSection:CreateButton({
+    Name = "Danger Action",
+    Icon = "⚠️",
+    Callback = function()
+        print("Danger button clicked!")
+    end
+})
+
+local SliderSection = MainTab:CreateSection("Slider Elements")
+
+local volumeSlider = SliderSection:CreateSlider({
+    Name = "Volume",
+    Range = {0, 100},
+    Increment = 1,
+    Suffix = "%",
+    CurrentValue = 75,
+    Flag = "Volume",
+    Callback = function(value)
+        print("Volume:", value)
+    end
+})
+
+local speedSlider = SliderSection:CreateSlider({
+    Name = "Speed",
+    Range = {1, 50},
+    Increment = 0.5,
+    Suffix = " studs/s",
+    CurrentValue = 16,
+    Flag = "Speed",
+    Callback = function(value)
+        print("Speed:", value)
+    end
+})
+
+local InputSection = MainTab:CreateSection("Input Elements")
+
+local usernameInput = InputSection:CreateInput({
+    Name = "Username",
+    PlaceholderText = "Enter username...",
+    CurrentValue = "",
+    Flag = "Username",
+    Callback = function(value)
+        print("Username:", value)
+    end
+})
+
+local messageInput = InputSection:CreateInput({
+    Name = "Message",
+    PlaceholderText = "Type your message...",
+    CurrentValue = "",
+    Flag = "Message",
+    Callback = function(value)
+        print("Message:", value)
+    end
+})
+
+local DropdownSection = MainTab:CreateSection("Dropdown Elements")
+
+local qualityDropdown = DropdownSection:CreateDropdown({
+    Name = "Quality",
+    Options = {"Low", "Medium", "High", "Ultra"},
+    CurrentOption = "Medium",
+    Flag = "Quality",
+    Callback = function(value)
+        print("Quality:", value)
+    end
+})
+
+local modeDropdown = DropdownSection:CreateDropdown({
+    Name = "Game Mode",
+    Options = {"Normal", "Hard", "Expert", "Insane"},
+    CurrentOption = "Normal",
+    Flag = "GameMode",
+    Callback = function(value)
+        print("Game Mode:", value)
+    end
+})
+
+local multiDropdown = DropdownSection:CreateDropdown({
+    Name = "Features",
+    Options = {"ESP", "Aimbot", "Speed", "Fly", "NoClip", "Anti-AFK"},
+    CurrentOption = {},
+    MultiSelect = true,
+    Flag = "Features",
+    Callback = function(value)
+        print("Features:", table.concat(value, ", "))
+    end
+})
+
+local ColorPickerSection = MainTab:CreateSection("Color Picker Elements")
+
+local primaryColor = ColorPickerSection:CreateColorPicker({
+    Name = "Primary Color",
+    Color = Color3.fromRGB(100, 120, 255),
+    Flag = "PrimaryColor",
+    Callback = function(color)
+        print("Primary Color:", color)
+    end
+})
+
+local secondaryColor = ColorPickerSection:CreateColorPicker({
+    Name = "Secondary Color",
+    Color = Color3.fromRGB(255, 100, 100),
+    Flag = "SecondaryColor",
+    Callback = function(color)
+        print("Secondary Color:", color)
+    end
+})
+
+local KeybindSection = MainTab:CreateSection("Keybind Elements")
+
+local menuKeybind = KeybindSection:CreateKeybind({
+    Name = "Toggle Menu",
+    CurrentKeybind = "RightShift",
+    Flag = "MenuKey",
+    Callback = function()
+        Window:Toggle()
+    end
+})
+
+local flyKeybind = KeybindSection:CreateKeybind({
+    Name = "Fly Toggle",
+    CurrentKeybind = "F",
+    Flag = "FlyKey",
+    Callback = function()
+        print("Fly toggled!")
+    end
+})
+
+local PlayerSelectorSection = MainTab:CreateSection("Player Selector Element")
+
+local targetPlayer = PlayerSelectorSection:CreatePlayerSelector({
+    Name = "Target Player",
+    CurrentPlayer = game.Players.LocalPlayer,
+    Flag = "TargetPlayer",
+    Callback = function(player)
+        print("Target Player:", player.Name)
+    end
+})
+
+local LabelSection = MainTab:CreateSection("Label Elements")
+
+local infoLabel = LabelSection:CreateLabel("Welcome to the UI Showcase!")
+
+local statusLabel = LabelSection:CreateLabel("Status: Ready")
+
+local ParagraphSection = MainTab:CreateSection("Paragraph Elements")
+
+local aboutParagraph = ParagraphSection:CreateParagraph({
+    Title = "About This Script",
+    Content = "This script demonstrates all available UI elements in the Axion UI Library. Each element is fully functional and can be customized."
+})
+
+local DividerSection = MainTab:CreateSection("Divider Elements")
+
+local divider1 = DividerSection:CreateDivider()
+
+local NotificationSection = MainTab:CreateSection("Notification Elements")
+
+local notifySuccessBtn = NotificationSection:CreateButton({
+    Name = "Success Notification",
+    Icon = "✅",
+    Callback = function()
+        Window:Notify({
+            Title = "Success!",
+            Content = "Operation completed successfully.",
+            Duration = 3,
+            Type = "Success"
+        })
+    end
+})
+
+local notifyErrorBtn = NotificationSection:CreateButton({
+    Name = "Error Notification",
+    Icon = "❌",
+    Callback = function()
+        Window:Notify({
+            Title = "Error!",
+            Content = "Something went wrong. Please try again.",
+            Duration = 5,
+            Type = "Error"
+        })
+    end
+})
+
+local notifyWarningBtn = NotificationSection:CreateButton({
+    Name = "Warning Notification",
+    Icon = "⚠️",
+    Callback = function()
+        Window:Notify({
+            Title = "Warning",
+            Content = "This action may have unintended consequences.",
+            Duration = 4,
+            Type = "Warning"
+        })
+    end
+})
+
+local notifyInfoBtn = NotificationSection:CreateButton({
+    Name = "Info Notification",
+    Icon = "ℹ️",
+    Callback = function()
+        Window:Notify({
+            Title = "Information",
+            Content = "This is an informational message.",
+            Duration = 3,
+            Type = "Info"
+        })
+    end
+})
+
+local ThemeSection = MainTab:CreateSection("Theme Elements")
+
+local themeDropdown = ThemeSection:CreateDropdown({
+    Name = "UI Theme",
+    Options = {"Default", "Dark", "Light", "Ocean", "Midnight", "Emerald", "Crimson", "Galaxy", "Sunset", "Cyberpunk"},
+    CurrentOption = "Ocean",
+    Flag = "UITheme",
+    Callback = function(value)
+        Window:SetTheme(value)
+    end
+})
+
+local DialogSection = MainTab:CreateSection("Dialog Elements")
+
+local showDialogBtn = DialogSection:CreateButton({
+    Name = "Show Dialog",
+    Icon = "💬",
+    Callback = function()
+        Window:Dialog({
+            Title = "Confirmation",
+            Content = "Are you sure you want to proceed with this action?",
+            Buttons = {
+                {
+                    Title = "Confirm",
+                    Callback = function()
+                        print("Action confirmed!")
+                    end,
+                    Primary = true
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Action cancelled!")
+                    end
+                }
+            }
+        })
+    end
+})
+
+local ResetSection = MainTab:CreateSection("Reset Elements")
+
+local resetBtn = ResetSection:CreateButton({
+    Name = "Reset All Settings",
+    Icon = "🔄",
+    Callback = function()
+        simpleToggle:Set(false)
+        advancedToggle:Set(true)
+        volumeSlider:Set(75)
+        speedSlider:Set(16)
+        usernameInput:Set("")
+        messageInput:Set("")
+        qualityDropdown:Set("Medium")
+        modeDropdown:Set("Normal")
+        multiDropdown:Set({})
+        primaryColor:Set(Color3.fromRGB(100, 120, 255))
+        secondaryColor:Set(Color3.fromRGB(255, 100, 100))
+        menuKeybind:Set("RightShift")
+        flyKeybind:Set("F")
+        targetPlayer:Set(game.Players.LocalPlayer)
+        themeDropdown:Set("Ocean")
+        print("All settings have been reset!")
+    end
+})
+
+local DestroySection = MainTab:CreateSection("Destroy Elements")
+
+local destroyBtn = DestroySection:CreateButton({
+    Name = "Destroy UI",
+    Icon = "🗑️",
+    Callback = function()
+        Window:Dialog({
+            Title = "Destroy UI",
+            Content = "Are you sure you want to destroy the UI? This action cannot be undone.",
+            Buttons = {
+                {
+                    Title = "Yes, Destroy",
+                    Callback = function()
+                        Window:Destroy()
+                    end,
+                    Primary = true
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("UI destruction cancelled.")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Window:Notify({
+    Title = "Welcome to Axion UI Demo",
+    Content = "This script showcases all UI elements.\nPress RightShift to toggle the UI.",
+    Duration = 5,
+    Type = "Info"
+})
