@@ -1451,6 +1451,12 @@ function AxionLibrary:CreateWindow(options)
         local isImageIcon = tabOptions.IconIsImage or false
         local iconImage = tabOptions.IconImage or ""
         
+        -- Auto-detect if Icon is an image asset ID
+        if tabIcon and type(tabIcon) == "string" and (tabIcon:match("rbxassetid://") or tabIcon:match("rbxthumb://") or tabIcon:match("http")) then
+            isImageIcon = true
+            iconImage = tabIcon
+        end
+        
         local Tab = { Name = tabName, Sections = {} }
         
         local TabButton = Utility:Create("TextButton", {
@@ -1747,6 +1753,12 @@ function AxionLibrary:CreateWindow(options)
                 local buttonIcon = opts.Icon or nil
                 local buttonIconIsImage = opts.IconIsImage or false
                 local buttonIconImage = opts.IconImage or ""
+                
+                -- Auto-detect if Icon is an image asset ID
+                if buttonIcon and type(buttonIcon) == "string" and (buttonIcon:match("rbxassetid://") or buttonIcon:match("rbxthumb://") or buttonIcon:match("http")) then
+                    buttonIconIsImage = true
+                    buttonIconImage = buttonIcon
+                end
                 
                 local Frame = Utility:Create("Frame", {
                     Name = name .. "Button",
