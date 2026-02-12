@@ -973,10 +973,10 @@ function AxionLibrary:CreateWindow(options)
     CreateControlButton("Minimize", "-", theme.Warning, function()
         Window.Minimized = not Window.Minimized
         if Window.Minimized then
-            Utility:Tween(MainContainer, {Size = UDim2.new(0, 700, 0, 85)}, Config.AnimationSpeed)
+            Utility:Tween(MainContainer, {Size = UDim2.new(0, 550, 0, 80)}, Config.AnimationSpeed)
             PlayerInfoContainer.Visible = false
         else
-            Utility:Tween(MainContainer, {Size = UDim2.new(0, 700, 0, 500)}, Config.AnimationSpeed)
+            Utility:Tween(MainContainer, {Size = UDim2.new(0, 550, 0, 420)}, Config.AnimationSpeed)
             PlayerInfoContainer.Visible = true
         end
     end)
